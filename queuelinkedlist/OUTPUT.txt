@@ -1,0 +1,51 @@
+OUTPUT
+
+--Queue using linked list--
+1.Enqueue
+2.Dequeue
+3.Display
+4.exit
+Enter your choice:1
+Enter value to enqueue:10
+10 enqueued to queue
+
+--Queue using linked list--
+1.Enqueue
+2.Dequeue
+3.Display
+4.exit
+Enter your choice:1
+Enter value to enqueue:20
+20 enqueued to queue
+
+--Queue using linked list--
+1.Enqueue
+2.Dequeue
+3.Display
+4.exit
+Enter your choice:1
+Enter value to enqueue:30
+30 enqueued to queue
+
+--Queue using linked list--
+1.Enqueue
+2.Dequeue
+3.Display
+4.exit
+Enter your choice:2
+10 dequeued from queue
+
+--Queue using linked list--
+1.Enqueue
+2.Dequeue
+3.Display
+4.exit
+Enter your choice:3
+Queue elements:20 ->30 ->NULL
+
+--Queue using linked list--
+1.Enqueue
+2.Dequeue
+3.Display
+4.exit
+Enter your choice:4
