@@ -1,0 +1,87 @@
+  1 #include<stdio.h>
+  2 #define SIZE 9
+  3 typedef struct{unsigned char x:1;}bit;
+  4 const int uset[SIZE]={1,2,3,4,5,6,7,8,9};
+  5 void readset(bit a[],int n);
+  6 void printset(const bit a[]);
+  7 void unionset(const bit a[],const bit b[],bit c[]);
+  8 void interset(const bit a[],const bit b[],bit c[]);
+  9 void difference(const bit a[],const bit b[],bit c[]);
+ 10 int main(void)
+ 11 {
+ 12     bit a[SIZE]={{0}},b[SIZE]={{0}},c[SIZE]={{0}};
+ 13     int n;
+ 14     printf("universal set:{1,2,3,4,5,6,7,8,9}\n\n");
+ 15     printf("No.of elements in set A:");
+ 16     if(scanf("%d",&n)!=1)return 1;
+ 17     readset(a,n);
+ 18     printf("No.of elements in set B:");
+ 19     if(scanf("%d",&n)!=1)return 1;
+ 20     readset(b,n);
+ 21     printf("\nset A:");
+ 22     printset(a);
+ 23     printf("set B:");
+ 24     printset(b);
+ 25     unionset(a,b,c);
+ 26     printf("\n\tAUB=");
+ 27     printset(c);
+ 28     interset(a,b,c);
+ 29     printf("\n\tA interset B=");
+ 30     printset(c);
+ 31     difference(a,b,c);
+ 32     printf("\n\tA-B=");
+ 33     printset(c);
+ 34     return 0;
+ 35 }
+ 36 void readset(bit a[],int n)
+ 37 {
+ 38   int i,k,x;
+ 39   if(n<0 || n>SIZE)
+ 40   {
+ 41     printf("Invalid size;must be between 0 and %d\n",SIZE);
+ 42     return;
+ 43   }
+ 44 printf("Enter %d elements:",n);
+ 45 for(i=0;i<n;i++)
+ 46 {
+ 47     if(scanf("%d",&x)!=1)return;
+ 48     for(k=0;k<SIZE;k++)
+ 49     {
+ 50         if(uset[k]==x)
+ 51         {
+ 52             a[k].x=1;break;
+ 53         }
+ 54     }
+ 55     if(k==SIZE)
+ 56         printf("%d is not in the universal set,ignored.\n",x);
+ 57 }
+ 58 }
+ 59 void printset(const bit a[])
+ 60 {
+ 61     int k,first=1;
+ 62     printf("{");
+ 63     for(k=0;k<SIZE;k++)
+ 64     {
+ 65         if(a[k].x)
+ 66         {
+ 67             printf(first ?"%d":",%d",uset[k]);
+ 68             first=0;
+ 69         }
+ 70     }
+ 71     printf("}\n");
+ 72 }
+ 73 void unionset(const bit a[],const bit b[],bit c[])
+ 74 {
+ 75     for(int k=0;k<SIZE;k++)
+ 76         c[k].x=a[k].x|b[k].x;
+ 77 }
+ 78 void interset(const bit a[],const bit b[],bit c[])
+ 79 {
+ 80     for (int k=0;k<SIZE;k++)
+ 81         c[k].x=a[k].x&b[k].x;
+ 82 }
+ 83 void difference(const bit a[],const bit b[],bit c[])
+ 84 {
+ 85     for(int k=0;k<SIZE;k++)
+ 86         c[k].x=a[k].x&& !b[k].x;
+ 87 }
